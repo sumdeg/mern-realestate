@@ -63,9 +63,7 @@ export default function Profile() {
               <span className='text-green-600'>Succesfully uploaded!</span> 
             )
             :
-            (
-              ''
-            )
+            ('')
           }
         </p>
         
