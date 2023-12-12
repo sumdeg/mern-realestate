@@ -149,7 +149,7 @@ export default function Profile() {
   }
   return (
     <div className='p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
+      <h1 className='text-3xl font-semibold text-center my-10 uppercase text-gray-700'>Profile</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input onChange={(e)=> setFile(e.target.files[0])} type="file" ref={fileRef} hidden accept='image/*'/>
         <img onClick={()=>fileRef.current.click()} src={formData.avatar || currentUser.avatar} alt="profile" className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'/>
@@ -173,12 +173,12 @@ export default function Profile() {
         <Link className='bg-green-700 text-white rounded-lg p-3 uppercase text-center hover:opacity-95' to={"/create-listing"}>Create Listing</Link>
       </form>
       <div className='flex justify-between mt-5'>
-        <span onClick={handleDeleteUser} className='text-gray-700 cursor-pointer'>Delete account</span>
-        <span onClick={handleSignOut} className='text-gray-700 cursor-pointer'>Sign out</span>
+        <span onClick={handleDeleteUser} className='text-gray-700 cursor-pointer font-bold'>Delete account</span>
+        <span onClick={handleSignOut} className='text-gray-700 cursor-pointer font-bold'>Sign out</span>
       </div>
       <p className='text-red-700 mt-5'>{error ? error : ''}</p>
       <p className='text-green-700 mt-5'>{updateSuccess ? 'User is updated succesfully!' : ''}</p>
-      <button onClick={handleShowListings} className='text-green-600 w-full'>Show Listings</button>
+      <button onClick={handleShowListings} className='text-green-600 w-full font-bold'>Show Listings</button>
       <p className='text-red-700 mt-5'>{showListingsError ? 'Error showing listings':''}</p>
         
         {userListings && userListings.length>0 && 
