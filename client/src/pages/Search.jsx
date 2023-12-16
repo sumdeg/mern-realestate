@@ -110,50 +110,50 @@ export default function Search() {
         <div className='p-7 border-b-2 md:border-r-2 md:min-h-screen'>
             <form onSubmit={handleSubmit} className='flex flex-col gap-8'>
                 <div className='flex items-center gap-2'>
-                    <label className='whitespace-nowrap font-semibold'>Search Term : </label>
+                    <label className='whitespace-nowrap font-semibold'>Arama : </label>
                     <input type="text" id='searchTerm' placeholder='Search...' value={sidebardata.searchTerm} onChange={handleChange} className='border rounded-lg p-3 w-full'/>
                 </div>
                 <div className='flex gap-2 flex-wrap items-center'>
-                    <label className='font-semibold'>Type : </label>
+                    <label className='font-semibold'>Tür : </label>
                     <div className='flex gap-2'>
-                        <input type="checkbox" id='all' className='w-5' onChange={handleChange} checked={sidebardata.type==='all'}/> <span>Rent & Sale</span>
+                        <input type="checkbox" id='all' className='w-5' onChange={handleChange} checked={sidebardata.type==='all'}/> <span>Kiralık & Satılık</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type="checkbox" id='rent' className='w-5' onChange={handleChange} checked={sidebardata.type==='rent'}/> <span>Rent</span>
+                        <input type="checkbox" id='rent' className='w-5' onChange={handleChange} checked={sidebardata.type==='rent'}/> <span>Kiralık</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type="checkbox" id='sale' className='w-5' onChange={handleChange} checked={sidebardata.type==='sale'}/> <span>Sale</span>
+                        <input type="checkbox" id='sale' className='w-5' onChange={handleChange} checked={sidebardata.type==='sale'}/> <span>Satılık</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type="checkbox" id='offer' className='w-5' onChange={handleChange} checked={sidebardata.offer}/> <span>Offer</span>
+                        <input type="checkbox" id='offer' className='w-5' onChange={handleChange} checked={sidebardata.offer}/> <span>Teklifli</span>
                     </div>
 
                 </div>
                 <div className='flex gap-2 flex-wrap items-center'>
-                    <label className='font-semibold'>Amenities : </label>
+                    <label className='font-semibold'>Olanaklar : </label>
                     <div className='flex gap-2'>
-                        <input type="checkbox" id='parking' className='w-5' onChange={handleChange} checked={sidebardata.parking}/> <span>Parking</span>
+                        <input type="checkbox" id='parking' className='w-5' onChange={handleChange} checked={sidebardata.parking}/> <span>Park alanı</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type="checkbox" id='furnished' className='w-5' onChange={handleChange} checked={sidebardata.furnished}/> <span>Furnished</span>
+                        <input type="checkbox" id='furnished' className='w-5' onChange={handleChange} checked={sidebardata.furnished}/> <span>Mobilyalı</span>
                     </div>                   
                 </div>
                 <div className='flex items-center gap-2'>
-                    <label className='font-semibold'>Sort : </label>
+                    <label className='font-semibold'>Sıralama : </label>
                     <select id="sort_order" onChange={handleChange} defaultValue={'created_at_desc'} className='border rounded-lg p-3'>
-                        <option value='regularPrice_desc'>Price high to low</option>
-                        <option value='regularPrice_asc'>Price low to high</option>
-                        <option value='createdAt_desc'>Latest</option>
-                        <option value='createdAt_asc'>Oldest</option>
+                        <option value='regularPrice_desc'>Fiyat yüksekten düşüğe</option>
+                        <option value='regularPrice_asc'>Fiyat düşükten yükseğe</option>
+                        <option value='createdAt_desc'>En son eklenen</option>
+                        <option value='createdAt_asc'>En eski</option>
 
                     </select>
                 </div>
-                <button className='bg-blue-700 text-white p-3 rounded-lg uppercase hover:opacity-95'>Search</button>
+                <button className='bg-blue-700 text-white p-3 rounded-lg uppercase hover:opacity-95'>Ara</button>
             </form>
         </div>
 
         <div className='flex-1'>
-            <h1 className='text-3xl font-semibold border-b p-3 text-slate-700 mt-5'>Listing Results</h1>
+            <h1 className='text-3xl font-semibold border-b p-3 text-slate-700 mt-5 uppercase'>Sonuçlar</h1>
             <div className='p-7 flex flex-wrap gap-4'>
                 {!loading && listings.length ===0 && (<p className='text-xl text-slate-700'>No listing found!</p>)}
                 {loading && (<p className='text-xl text-slate-700 text-center w-full'>Loading...</p>)}
@@ -162,7 +162,7 @@ export default function Search() {
                 ))}
 
                 {showMore && (
-                    <button onClick={()=>{onShowMoreClick()}} className='text-green-700 hover:underline p-7 text-center w-full'>Show more</button>
+                    <button onClick={()=>{onShowMoreClick()}} className='text-green-700 hover:underline p-7 text-center w-full'>Daha fazla göster</button>
                 )}
             </div>
         </div>

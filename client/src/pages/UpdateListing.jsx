@@ -16,7 +16,7 @@ export default function UpdateListing() {
         address:'',
         type:'rent',
         bedrooms:1,
-        bathrooms:1,
+        livingRooms:1,
         regularPrice:50,
         discountPrice:0,
         offer:false,
@@ -142,43 +142,43 @@ export default function UpdateListing() {
         }
     }
   return (
-    <main className='p-3 max-w-4xl mx-auto'>
+    <main className='p-3 max-w-5xl mx-auto'>
         <h1 className='text-3xl font-semibold text-center my-7'>Update a Listing</h1>
         <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
             <div className='flex flex-col gap-4 flex-1'>
-                <input type="text" onChange={handleChange} value={formData.name} placeholder='Name' className='border p-3 rounded-lg' id='name' maxLength='60' minLength='10' required/>
-                <textarea type="text" onChange={handleChange} value={formData.description} placeholder='Description' className='border p-3 rounded-lg' id='description' required/>
-                <input type="text" onChange={handleChange} value={formData.address} placeholder='Address' className='border p-3 rounded-lg' id='address' required/>
+                <input type="text" onChange={handleChange} value={formData.name} placeholder='İlan İsmi' className='border p-3 rounded-lg' id='name' maxLength='60' minLength='10' required/>
+                <textarea type="text" onChange={handleChange} value={formData.description} placeholder='Açıklama' className='border p-3 rounded-lg' id='description' required/>
+                <input type="text" onChange={handleChange} value={formData.address} placeholder='Adres' className='border p-3 rounded-lg' id='address' required/>
                 <div className='flex gap-6 flex-wrap'>
                     <div className='flex gap-2'>
-                        <input type="checkbox" onChange={handleChange} checked={formData.type === "sale"} id='sale' className='w-5'/> <span>Sell</span>
+                        <input type="checkbox" onChange={handleChange} checked={formData.type === "sale"} id='sale' className='w-5'/> <span>Satılık</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type="checkbox" onChange={handleChange} checked={formData.type === "rent"} id='rent' className='w-5'/> <span>Rent</span>
+                        <input type="checkbox" onChange={handleChange} checked={formData.type === "rent"} id='rent' className='w-5'/> <span>Kiralık</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type="checkbox" onChange={handleChange} checked={formData.parking} id='parking' className='w-5'/> <span>Parking spot</span>
+                        <input type="checkbox" onChange={handleChange} checked={formData.parking} id='parking' className='w-5'/> <span>Park yeri</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type="checkbox" onChange={handleChange} checked={formData.furnished} id='furnished' className='w-5'/> <span>Furnished</span>
+                        <input type="checkbox" onChange={handleChange} checked={formData.furnished} id='furnished' className='w-5'/> <span>Mobilyalı</span>
                     </div>
                     <div className='flex gap-2'>
-                        <input type="checkbox" onChange={handleChange} checked={formData.offer} id='offer' className='w-5'/> <span>Offer</span>
+                        <input type="checkbox" onChange={handleChange} checked={formData.offer} id='offer' className='w-5'/> <span>Teklif</span>
                     </div>
                 </div>
 
                 <div className='flex flex-wrap gap-6'>
                     <div className="flex items-center gap-2">
-                        <input type="number" id='bedrooms' onChange={handleChange} value={formData.bedrooms}  min='1' max='10' required className='p-3 border border-gray-300 rounded-lg'/> <p>Beds</p>
+                        <input type="number" id='bedrooms' onChange={handleChange} value={formData.bedrooms}  min='1' max='10' required className='p-3 border border-gray-300 rounded-lg'/> <p>Oda</p>
                     </div>
                     <div className="flex items-center gap-2">
-                        <input type="number" id='bathrooms' onChange={handleChange} value={formData.bathrooms} min='1' max='10' required className='p-3 border border-gray-300 rounded-lg'/> <p>Baths</p>
+                        <input type="number" id='livingRooms' onChange={handleChange} value={formData.livingRooms} min='1' max='10' required className='p-3 border border-gray-300 rounded-lg'/> <p>Salon</p>
                     </div>
                     <div className="flex items-center gap-2">
                         <input type="number" id='regularPrice' onChange={handleChange} value={formData.regularPrice} min='50' max='10000000' required className='p-3 border border-gray-300 rounded-lg'/>
                         <div className='flex flex-col items-center'>
-                            <p>Regular Price</p>
-                            <span className='text-xs'>($ / month)</span>
+                            <p>Normal Fiyat</p>
+                            <span className='text-xs'>(₺ / aylık)</span>
                         </div> 
                      
                     </div>
@@ -186,8 +186,8 @@ export default function UpdateListing() {
                             <div className="flex items-center gap-2">
                             <input type="number" id='discountPrice' onChange={handleChange} value={formData.discountPrice} min='0' max='10000000' required className='p-3 border border-gray-300 rounded-lg'/> 
                             <div className='flex flex-col items-center'>
-                                <p>Discounted Price</p>
-                                <span className='text-xs'>($ / month)</span>
+                                <p>İndirimli Fiyat</p>
+                                <span className='text-xs'>(₺ / aylık)</span>
                             </div>
                            
                         </div>
@@ -196,22 +196,22 @@ export default function UpdateListing() {
                 </div>
             </div>
             <div className='flex flex-col gap-4 flex-1'>
-                <p className='font-semibold'>Images: <span className='font-normal text-gray-600 ml-2'>The first image will be the cover (max 6)</span></p>
+                <p className='font-semibold'>Görüntüler: <span className='font-normal text-gray-600 ml-2'>İlk görüntü kapak resmi olacaktır (max 6).</span></p>
 
                 <div className='flex gap-4'>
                     <input onChange={(e)=>setFiles(e.target.files)} className='p-3 border border-gray-300 rounded w-full' type="file" id='images' accept='image/*' multiple/>
-                    <button disabled={uploading} type='button' onClick={handleImageSubmit} className='p-3 text-green-600 border border-green-800 rounded uppercase hover:shadow-lg disabled:opacity-80'>{uploading? 'Uploading....': 'Upload'}</button>
+                    <button disabled={uploading} type='button' onClick={handleImageSubmit} className='p-3 text-green-600 border border-green-800 rounded uppercase hover:shadow-lg disabled:opacity-80'>{uploading? 'Yükleniyor....': 'Yükle'}</button>
                 </div>
             <p className='text-red-600 text-sm'>{imageUploadError}</p>
             {
                 formData.imageUrls.length>0 && formData.imageUrls.map((url,index)=>(
                     <div key={url} className='flex justify-between p-2 border items-center'>
                         <img src={url} alt="listing image" className='w-20 h-20 object-contain rounded-lg'/>
-                        <button type='button' onClick={()=>handleRemoveImg(index)} className='p-3 text-red-600 rounded-lg uppercase hover:opacity-85'>Delete</button>
+                        <button type='button' onClick={()=>handleRemoveImg(index)} className='p-3 text-red-600 rounded-lg uppercase hover:opacity-85'>Sil</button>
                     </div>
                 ))
             }
-            <button disabled={loading || uploading } className='p-3 bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Updating...' : 'Update Listing'}</button>
+            <button disabled={loading || uploading } className='p-3 bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Güncelleniyor...' : 'İlanı Güncelle'}</button>
             {error && <p className='text-red-600 text-sm'>{error}</p>}
             </div>
         </form>
