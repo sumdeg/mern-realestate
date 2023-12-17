@@ -9,21 +9,12 @@ import ImageSwiper from '../components/ImageSwiper'
 
 
 export default function Home() {
-  const [offerListings,setOfferListings]=useState([])
+
   const [saleListings, setSaleListings] = useState([])
   const [rentListings, setRentListings] = useState([])
   SwiperCore.use([Navigation])
   useEffect(()=>{
-    const fetchOfferListings=async()=>{
-      try {
-        const res= await fetch('/api/listing/get?offer=true&limit=4')
-        const data=await res.json()
-        setOfferListings(data)
-        fetchRentListings()
-      } catch (error) {
-        console.log(error)
-      }
-    }
+
     const fetchRentListings=async()=>{
       try {
         const res= await fetch('/api/listing/get?type=rent&limit=4')
@@ -43,7 +34,7 @@ export default function Home() {
         console.log(error)
       }
     }
-    fetchOfferListings();
+    fetchRentListings();
   },[])
   
   return (
@@ -92,19 +83,7 @@ export default function Home() {
                 </div>
               )}
 
-              {offerListings && offerListings.length >0 && (
-                <div className=''>
-                    <div className='my-3'>
-                      <h2 className='text-3xl font-bold text-slate-600'>Son Verilen Teklifler</h2>
-                      <Link className='text-sm text-blue-800 hover:underline' to={'/search?offer=true'}>Daha fazla teklif göster</Link>
-                    </div>
-                    <div className='flex flex-wrap gap-4'>
-                      {offerListings.map((listing)=>(
-                        <ListingItem listing={listing} key={listing._id}/>
-                      ))}
-                    </div>
-                </div>
-              )}
+             
         </div>
     </div>
   )

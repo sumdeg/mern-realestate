@@ -14,9 +14,7 @@ export default function ListingItem({listing}) {
                     <p className='text-sm font-semibold text-gray-600 truncate w-full'>{listing.address}</p>
                 </div>
                 <p className='text-sm text-gray-600 line-clamp-2'>{listing.description}</p>
-                <p className='text-blue-900 mt-2 font-bold'> {listing.offer
-                ? listing.discountPrice.toLocaleString('tr-TR', { maximumFractionDigits: 0 }) + ' ₺'
-                : listing.regularPrice.toLocaleString('tr-TR', {  maximumFractionDigits: 0 }) + ' ₺'}
+                <p className='text-blue-900 mt-2 font-bold'> {listing.regularPrice.toLocaleString('tr-TR', {  maximumFractionDigits: 0 }) + ' ₺'}
                     {listing.type==='rent' && ' / aylık'}
                 </p>
                 <div className='text-green-700 flex gap-4'>

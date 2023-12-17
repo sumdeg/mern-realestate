@@ -68,9 +68,7 @@ export default function Listing() {
                 <div className='flex flex-col max-w-[1000px] mx-auto p-3 my-7 gap-4  rounded-2xl'  style={{ backgroundColor: '#d2ddfe' }}>
                       <p className='text-3xl font-bold'>
                         {listing.name} - {' '}
-                        {listing.offer
-                            ? listing.discountPrice.toLocaleString('tr-TR', { maximumFractionDigits: 0 }) + ' ₺'
-                            : listing.regularPrice.toLocaleString('tr-TR', {  maximumFractionDigits: 0 }) + ' ₺'}
+                        { listing.regularPrice.toLocaleString('tr-TR', {  maximumFractionDigits: 0 }) + ' ₺'}
                         {listing.type === 'rent' && ' / aylık'}
                       </p>
                       <p className='flex items-center mt-2 gap-2 text-slate-800 my-2 text-lg'>
@@ -80,11 +78,7 @@ export default function Listing() {
                         <p className='bg-red-900 w-full max-w-[300px] text-white text-center p-2 rounded-md font-medium text-lg'>
                           {listing.type === 'rent' ? 'Kiralık' : 'Satılık'}
                         </p>
-                        {
-                          listing.offer && (
-                            <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>{+listing.regularPrice - +listing.discountPrice} OFF</p>
-                          )
-                        }
+                  
                       </div>
                    <p className='text-slate-800 text-lg font-semibold'> <span className=' text-black uppercase'>Açıklama - {' '}</span> {listing.description}</p>
                    <ul className='text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6'>

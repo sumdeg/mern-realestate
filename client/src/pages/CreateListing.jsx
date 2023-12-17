@@ -147,9 +147,7 @@ export default function CreateListing() {
                     <div className='flex gap-2'>
                         <input type="checkbox" onChange={handleChange} checked={formData.furnished} id='furnished' className='w-5'/> <span>Mobilyalı</span>
                     </div>
-                    <div className='flex gap-2'>
-                        <input type="checkbox" onChange={handleChange} checked={formData.offer} id='offer' className='w-5'/> <span>Teklif</span>
-                    </div>
+                
                 </div>
 
                 <div className='flex flex-wrap gap-6'>
@@ -167,16 +165,7 @@ export default function CreateListing() {
                         </div> 
                      
                     </div>
-                    {formData.offer && (
-                            <div className="flex items-center gap-2">
-                            <input type="number" id='discountPrice' onChange={handleChange} value={formData.discountPrice} min='0' max='10000000' required className='p-3 border border-gray-300 rounded-lg'/> 
-                            <div className='flex flex-col items-center'>
-                                <p>İndirimli Fiyat</p>
-                                <span className='text-xs'>(₺ / aylık)</span>
-                            </div>
-                           
-                        </div>
-                    )}
+                    
                     
                 </div>
             </div>

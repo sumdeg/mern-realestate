@@ -13,7 +13,6 @@ export default function Search() {
         type:'all',
         furnished:false,
         parking:false,
-        offer:false,
         sort:'created_at',
         order:'desc'
     })
@@ -24,17 +23,15 @@ export default function Search() {
         const typeFromUrl=urlParams.get('type')
         const parkingFromUrl=urlParams.get('parking')
         const furnishedFromUrl=urlParams.get('furnished')
-        const offerFromUrl=urlParams.get('offer')
         const sortFromUrl=urlParams.get('sort')
         const orderFromUrl=urlParams.get('order')
         
-        if(searchTermFromUrl||typeFromUrl||parkingFromUrl||furnishedFromUrl||offerFromUrl||sortFromUrl||orderFromUrl){
+        if(searchTermFromUrl||typeFromUrl||parkingFromUrl||furnishedFromUrl||sortFromUrl||orderFromUrl){
             setSidebardata({
                 searchTerm: searchTermFromUrl || '',
                 type: typeFromUrl || 'all',
                 parking: parkingFromUrl === 'true' ? true : false,
                 furnished: furnishedFromUrl === 'true' ? true: false,
-                offer: offerFromUrl === 'true' ? true: false,
                 sort: sortFromUrl || 'created_at',
                 order: orderFromUrl || 'desc'
             })
@@ -67,7 +64,7 @@ export default function Search() {
         if(e.target.id === 'searchTerm'){
             setSidebardata({...sidebardata, searchTerm:e.target.value})
         }
-        if(e.target.id === 'parking' || e.target.id === 'furnished' ||  e.target.id === 'offer' ){
+        if(e.target.id === 'parking' || e.target.id === 'furnished' ){
             setSidebardata({...sidebardata, [e.target.id]:e.target.checked || e.target.checked === 'true' ? true: false})
         }
 
@@ -85,7 +82,6 @@ export default function Search() {
         urlParams.set('type',sidebardata.type)
         urlParams.set('parking',sidebardata.parking)
         urlParams.set('furnished',sidebardata.furnished)
-        urlParams.set('offer',sidebardata.offer)
         urlParams.set('sort',sidebardata.sort)
         urlParams.set('order',sidebardata.order)
         const searchQuery=urlParams.toString()
@@ -124,9 +120,7 @@ export default function Search() {
                     <div className='flex gap-2'>
                         <input type="checkbox" id='sale' className='w-5' onChange={handleChange} checked={sidebardata.type==='sale'}/> <span>Satılık</span>
                     </div>
-                    <div className='flex gap-2'>
-                        <input type="checkbox" id='offer' className='w-5' onChange={handleChange} checked={sidebardata.offer}/> <span>Teklifli</span>
-                    </div>
+                   
 
                 </div>
                 <div className='flex gap-2 flex-wrap items-center'>
